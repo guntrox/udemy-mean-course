@@ -6,7 +6,7 @@
             type="text"
             name="title"
             placeholder="Post Title"
-            [ngModel]="post.title"
+            [ngModel]="post?.title"
             required
             minlength="3"
             #title="ngModel">
@@ -18,7 +18,7 @@
           rows="6"
           name="content"
           placeholder="Enter some content"
-          [ngModel]="post.content"
+          [ngModel]="post?.content"
           required
           #content="ngModel"></textarea>
           <mat-error *ngIf="content.invalid">Please enter some content.</mat-error>
