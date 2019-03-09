@@ -55,11 +55,11 @@ export class PostsService {
       });
   }
 
-  updatePost(id: string, title: string, content: string) {
+  updatePost(myid: string, mytitle: string, mycontent: string) {
     const post: Post = {
-      id: id, title: title, content: content
+      id: myid, title: mytitle, content: mycontent
     };
-    this.http.put('http://localhost:3000/api/posts/' + id, post)
+    this.http.put('http://localhost:3000/api/posts/' + myid, post)
       .subscribe(() => {
         const updatedPosts = [...this.posts];
         const oldPostIndex = updatedPosts.findIndex(p => p.id === post.id);
