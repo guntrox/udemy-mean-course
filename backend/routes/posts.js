@@ -79,7 +79,6 @@ router.get('/:id', (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   Post.deleteOne({_id: req.params.id}).then(createdPost => {
-    console.log(createdPost);
     res.status(200).json({ message: "Post deleted!"});
   });
 });

@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -6,7 +7,8 @@ const postsRoutes = require('./routes/posts');
 const app = express();
 
 // db_password = SF8JDipPTMlSBfuN
-mongoose.connect("mongodb+srv://olwyn:SF8JDipPTMlSBfuN@udemy-mean-course-rbajx.mongodb.net/node-angular?retryWrites=true")
+mongoose.connect("mongodb+srv://olwyn:SF8JDipPTMlSBfuN@udemy-mean-course-rbajx.mongodb.net/node-angular?retryWrites=true",
+  { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to database!');
   })
@@ -16,6 +18,7 @@ mongoose.connect("mongodb+srv://olwyn:SF8JDipPTMlSBfuN@udemy-mean-course-rbajx.m
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
